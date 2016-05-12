@@ -67,16 +67,14 @@ function ruleList(results) {
 // Iterate through pageStats in the psiResults object and
 // return the total number of bytes to load the website.
 function totalBytes(results) {
-    var bytesArray = [];
+    var total = 0;
     var regEx = /Bytes$/;
     for (var prop in results.pageStats) {
-		if (regEx.test(prop))
-        bytesArray.push(Number(results.pageStats[prop]));
+        if (regEx.test(prop)) {
+        total += (Number(results.pageStats[prop]));
+        }
     }
-    var sum = bytesArray.reduce(function(total, num) {
-        return total + num;
-    },0);
-  return "Total number of bytes to load the website: " + sum;
+  return "Total number of bytes to load the website: " + total;
 }
 
 // Below, you'll find a sample PS Insights JSON
